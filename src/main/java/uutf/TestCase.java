@@ -2,14 +2,17 @@ package uutf;
 
 public abstract class TestCase {
 
-    public final void run() {
+    public final TestResult run() {
+        TestResult result = new TestResult(this.getClass().getCanonicalName());
         try {
-            System.out.println(this.getClass().getCanonicalName());
             test();
-            System.out.println("SUCCESS");
+            result.setStatus(STATUS.PASSED);
         } catch (AssertionError ae) {
-            System.out.println("FAIL!");
+            result.setStatus(STATUS.FAILED);
+        } catch (Exception e) {
+            result.setStatus(STATUS.ERRORED);
         }
+        return result;
     }
 
     protected abstract void test(); // Template Method
