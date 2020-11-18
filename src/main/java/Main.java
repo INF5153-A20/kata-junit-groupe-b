@@ -7,12 +7,7 @@ public class Main {
         System.out.println("Demo JUNIT");
 
         TestRunner runner = new TestRunner();
-
-        runner.addCase(new AddIntegers());
-        runner.addCase(new SubIntegers());
-        runner.addCase(new ThrowAnException());
-
-        runner.run();
+        runner.runAndPrint(new IntegerTests());
 
     }
 }
