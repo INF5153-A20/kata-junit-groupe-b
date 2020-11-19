@@ -8,11 +8,8 @@ public class Main {
 
         TestRunner runner = new TestRunner();
 
-        runner.addCase(new AddIntegers());
-        runner.addCase(new SubIntegers());
-        runner.addCase(new ThrowAnException());
+        runner.runAndPrint(new IntegerTests());
 
-        runner.run();
 
     }
 }

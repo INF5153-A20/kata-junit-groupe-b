@@ -1,8 +1,8 @@
 package uutf;
 
-public abstract class TestCase {
+public abstract class TestCase implements  Test {
 
-    public final TestResult run() {
+    public final void run(ResultCollector collector) {
         TestResult result = new TestResult(this.getClass().getCanonicalName());
         try {
             test();
@@ -12,7 +12,7 @@ public abstract class TestCase {
         } catch (Exception e) {
             result.setStatus(STATUS.ERRORED);
         }
-        return result;
+        collector.addResult(result);
     }
 
     protected abstract void test(); // Template Method
