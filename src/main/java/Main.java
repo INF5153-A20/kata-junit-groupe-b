@@ -1,15 +1,16 @@
 import tests.*;
-import uutf.TestCase;
-import uutf.TestFactory;
-import uutf.TestRunner;
+import uutf.*;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("Demo JUNIT");
         TestRunner runner = new TestRunner();
-        TestFactory scanner = new TestFactory();
+        TestFactory scanner = new TestFactoryMethod();
         runner.runAndPrint(scanner.scan(IntegerTests.class));
+
+        scanner = new TestFactoryAnnotation();
+        runner.runAndPrint(scanner.scan(IntegerTestsAnnotations.class));
 
         System.out.println("Demo JUNIT - SingleTest");
         runner = new TestRunner();
